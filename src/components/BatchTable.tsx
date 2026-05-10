@@ -24,6 +24,8 @@ const STEP_ICON: Record<string, typeof Sprout> = {
 
 export function BatchTable({ batches }: { batches: Batch[] }) {
   const [open, setOpen] = useState<Batch | null>(null);
+  const [handover, setHandover] = useState<Batch | null>(null);
+  const { nextStatusOf } = useBatches();
 
   return (
     <>
