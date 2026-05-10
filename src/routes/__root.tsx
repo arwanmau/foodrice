@@ -11,6 +11,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/auth-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import { RoleProvider } from "@/lib/role-context";
+import { BatchesProvider } from "@/lib/batches-context";
 
 import appCss from "../styles.css?url";
 
