@@ -64,18 +64,34 @@ export function BatchTable({ batches }: { batches: Batch[] }) {
                   <td className="px-5 py-4 text-muted-foreground">{b.location}</td>
                   <td className="px-5 py-4 font-mono text-xs text-muted-foreground">{b.timestamp}</td>
                   <td className="px-5 py-4 text-right">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toast.success("Opening Polygonscan", { description: b.txHash });
-                      }}
-                      className="gap-1.5 border-chain/30 text-chain hover:bg-chain/10 hover:text-chain"
-                    >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                      View on Blockchain
-                    </Button>
+                    <div className="flex items-center justify-end gap-1.5">
+                      {nextStatusOf(b.status) && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setHandover(b);
+                          }}
+                          className="gap-1.5"
+                        >
+                          <ArrowRightLeft className="h-3.5 w-3.5" />
+                          Handover
+                        </Button>
+                      )}
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toast.success("Opening Polygonscan", { description: b.txHash });
+                        }}
+                        className="gap-1.5 border-chain/30 text-chain hover:bg-chain/10 hover:text-chain"
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        Ledger
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}
