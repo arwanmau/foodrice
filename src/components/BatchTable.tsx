@@ -102,28 +102,39 @@ export function BatchTable({ batches }: { batches: Batch[] }) {
         {/* Mobile cards */}
         <div className="divide-y md:hidden">
           {batches.map((b) => (
-            <button
-              key={b.id}
-              onClick={() => setOpen(b)}
-              className="flex w-full flex-col gap-3 p-4 text-left transition-colors hover:bg-accent/50"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary/10 text-primary">
-                    <Package className="h-4 w-4" />
+            <div key={b.id} className="flex w-full flex-col gap-3 p-4">
+              <button
+                onClick={() => setOpen(b)}
+                className="flex w-full flex-col gap-3 text-left transition-colors hover:bg-accent/50"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary/10 text-primary">
+                      <Package className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <div className="font-semibold">#{b.id}</div>
+                      <div className="text-xs text-muted-foreground">{b.product} · {b.variety}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-semibold">#{b.id}</div>
-                    <div className="text-xs text-muted-foreground">{b.product} · {b.variety}</div>
-                  </div>
+                  <StatusBadge status={b.status} />
                 </div>
-                <StatusBadge status={b.status} />
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                <div className="flex items-center gap-1.5"><MapPin className="h-3 w-3" /> {b.location}</div>
-                <div className="flex items-center gap-1.5 font-mono"><Clock className="h-3 w-3" /> {b.timestamp.split(" ")[0]}</div>
-              </div>
-            </button>
+                <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-1.5"><MapPin className="h-3 w-3" /> {b.location}</div>
+                  <div className="flex items-center gap-1.5 font-mono"><Clock className="h-3 w-3" /> {b.timestamp.split(" ")[0]}</div>
+                </div>
+              </button>
+              {nextStatusOf(b.status) && (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setHandover(b)}
+                  className="w-full gap-1.5"
+                >
+                  <ArrowRightLeft className="h-3.5 w-3.5" /> Handover ke {nextStatusOf(b.status)}
+                </Button>
+              )}
+            </div>
           ))}
         </div>
       </div>
