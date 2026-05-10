@@ -119,8 +119,10 @@ function RootComponent() {
       <ThemeProvider>
         <AuthProvider>
           <RoleProvider>
-            <Outlet />
-            <Toaster richColors position="top-right" />
+            <BatchesProvider>
+              <Outlet />
+              <Toaster richColors position="top-right" />
+            </BatchesProvider>
           </RoleProvider>
         </AuthProvider>
       </ThemeProvider>
