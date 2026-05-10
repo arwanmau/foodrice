@@ -213,6 +213,8 @@ export function BatchTable({ batches }: { batches: Batch[] }) {
           )}
         </DialogContent>
       </Dialog>
+
+      <HandoverDialog batch={handover} open={!!handover} onOpenChange={(v) => !v && setHandover(null)} />
     </>
   );
 }
