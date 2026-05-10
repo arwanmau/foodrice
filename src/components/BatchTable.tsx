@@ -9,8 +9,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { ExternalLink, MapPin, Clock, Package, Sprout, Search, Truck, Warehouse, Check } from "lucide-react";
+import { ExternalLink, MapPin, Clock, Package, Sprout, Search, Truck, Warehouse, Check, ArrowRightLeft } from "lucide-react";
 import { toast } from "sonner";
+import { HandoverDialog } from "./HandoverDialog";
+import { useBatches } from "@/lib/batches-context";
 
 const STEP_ICON: Record<string, typeof Sprout> = {
   Harvested: Sprout,
