@@ -7,6 +7,8 @@ import { BatchTable } from "@/components/BatchTable";
 import { EscrowCard } from "@/components/EscrowCard";
 import { AnalyticsChart } from "@/components/AnalyticsChart";
 import { BATCHES, ROLE_LABELS } from "@/lib/mock-data";
+import { useBatches } from "@/lib/batches-context";
+import { AddBatchDialog } from "@/components/AddBatchDialog";
 import { Sprout, Truck, Warehouse, Store, Package, Activity, ShieldCheck, TrendingUp } from "lucide-react";
 
 export const Route = createFileRoute("/")({
