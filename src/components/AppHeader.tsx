@@ -61,7 +61,9 @@ export function AppHeader() {
 
         <nav className="flex items-center gap-1">
           <NavLink to="/" label="Dashboard" Icon={LayoutGrid} />
-          <NavLink to="/scan" label="Consumer Scan" Icon={QrCode} />
+          <NavLink to="/live" label="Live Map" Icon={Radio} />
+          <NavLink to="/insights" label="AI Insights" Icon={Sparkles} />
+          <NavLink to="/scan" label="Scan" Icon={QrCode} />
         </nav>
 
         <div className="flex items-center gap-1.5">
