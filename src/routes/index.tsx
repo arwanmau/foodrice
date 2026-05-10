@@ -31,6 +31,7 @@ const ROLE_COPY = {
 function Dashboard() {
   const { user } = useAuth();
   const { role } = useRole();
+  const { batches } = useBatches();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,11 +44,12 @@ function Dashboard() {
   const label = ROLE_LABELS[role];
 
   const stats = [
-    { label: "Active Batches", value: BATCHES.length, Icon: Package, tint: "text-primary bg-primary/10" },
-    { label: "On-Chain Events", value: BATCHES.reduce((a, b) => a + b.timeline.length, 0), Icon: Activity, tint: "text-chain bg-chain/10" },
-    { label: "Verified Origins", value: 4, Icon: ShieldCheck, tint: "text-success bg-success/10" },
-    { label: "Throughput (T)", value: Math.round(BATCHES.reduce((a, b) => a + b.weightKg, 0) / 1000), Icon: TrendingUp, tint: "text-secondary bg-secondary/10" },
+    { label: "Active Batches", value: batches.length, Icon: Package, tint: "text-primary bg-primary/10" },
+    { label: "On-Chain Events", value: batches.reduce((a, b) => a + b.timeline.length, 0), Icon: Activity, tint: "text-chain bg-chain/10" },
+    { label: "Verified Origins", value: new Set(batches.map((b) => b.origin.country)).size, Icon: ShieldCheck, tint: "text-success bg-success/10" },
+    { label: "Throughput (T)", value: Math.round(batches.reduce((a, b) => a + b.weightKg, 0) / 1000), Icon: TrendingUp, tint: "text-secondary bg-secondary/10" },
   ];
+  void BATCHES;
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
