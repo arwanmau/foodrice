@@ -107,7 +107,7 @@ function Dashboard() {
               Live · Polygon Mainnet
             </div>
           </div>
-          <BatchTable batches={BATCHES} />
+          <BatchTable batches={batches} />
         </section>
       </main>
     </div>
